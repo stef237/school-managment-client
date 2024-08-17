@@ -1,0 +1,33 @@
+
+
+<div class="bg" style="margin-top: 200px;">
+  <mat-spinner *ngIf="isSpinning" [diameter]="50" class="spinner"></mat-spinner>
+  <div class="parent">
+    <div class="child">
+      <h1 class="form-title" style="text-align: center"> Assigner une Formation à un Adhérent</h1>
+      <form class="login-form" >
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+        <label for="student">Étudiant:</label>
+        <mat-form-field appearance="outline" class="form-field">
+      <mat-label >Adhérent :</mat-label>
+      <mat-select id="student"  [(ngModel)]="selectedStudentId"  [ngModelOptions]="{standalone: true}" class="form-control">
+        <mat-option *ngFor="let student of students" [value]="student.id">{{ student.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+        <label for="formation">Formation:</label>
+         <mat-form-field appearance="outline" class="form-field">
+      <mat-label >Formation :</mat-label>
+      <mat-select id="formation" [(ngModel)]="selectedFormationId"  [ngModelOptions]="{standalone: true}" class="form-control">
+        <mat-option *ngFor="let formation of formations" [value]="formation.id">{{ formation.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+
+        <button mat-raised-button color="primary"   (click)="assignStudentToFormation()">Assigner </button>
+      </form>
+    </div>
+  </div>
+</div>

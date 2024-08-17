@@ -1,0 +1,62 @@
+
+<h1 class="form-title" style="text-align: center">Liste des Adhérents</h1>
+
+<div class="table-container">
+  <table mat-table [dataSource]="students" class="mat-elevation-z8 centered-table">
+    <!-- Nom Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="blue-header"> Nom </th>
+      <td mat-cell *matCellDef="let student"> {{student.name}} </td>
+    </ng-container>
+
+    <!-- Niveau Column -->
+    <ng-container matColumnDef="studentClass">
+      <th mat-header-cell *matHeaderCellDef class="blue-header"> Niveau </th>
+      <td mat-cell *matCellDef="let student"> {{student.studentClass}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef class="blue-header"> Email </th>
+      <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+    </ng-container>
+
+    <!-- Address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef class="blue-header"> Addresse </th>
+      <td mat-cell *matCellDef="let student"> {{student.address}} </td>
+    </ng-container>
+
+    <!-- Date de Naiss Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef class="blue-header"> Date de Naissance </th>
+      <td mat-cell *matCellDef="let student"> {{student.birthDate | date:"MMM d, y"}} </td>
+    </ng-container>
+
+    <!-- Genre Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef class="blue-header"> Genre </th>
+      <td mat-cell *matCellDef="let student"> {{student.gender}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Boutons Actions </th>
+      <td mat-cell *matCellDef="let student">
+
+        <button mat-button color="primary" [routerLink]='["/admin/fee",student.id]'>Pay</button>
+        <button mat-button color="primary" [routerLink]='["/admin/student",student.id,"certificat"]'>Certifier</button>
+        <button mat-button color="primary" [routerLink]='["/admin/student",student.id]'>Modifier</button>
+        <button mat-button color="warn" (click)="deleteStudent(student.id)">Supprimer</button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div class="actions-container">
+  <button mat-raised-button color="primary" [routerLink]='["/admin/assign-student-formation"]'>Ajouter une Formation à un adhérent</button>
+  <button mat-raised-button color="secondary" [routerLink]='["/admin/student"]'>Ajouter un Participant</button>
+</div>

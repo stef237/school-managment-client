@@ -1,0 +1,17 @@
+<h1 class="form-title" style="text-align: center">Liste de mes Certificats</h1>
+
+<div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+  <mat-card class="teacher-card" *ngFor="let certificat of certificats">
+    <mat-card-header style="background-color: #3f51b5;">
+      <mat-card-title style="color: white;">Nom: <strong>{{certificat.name}}</strong></mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content style="margin-top: 10px;">
+      <p>Obtenu le: <strong>{{certificat.obtenu | date:"MMM, dd, y"}}</strong></p>
+      <p>Validité: <strong>{{certificat.validite | date: "MMM,dd, y"}}</strong></p>
+      <p>description: <strong>{{certificat.description}}</strong></p>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
